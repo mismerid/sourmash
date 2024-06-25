@@ -1,0 +1,23 @@
+`mkdir smtut`
+`cd smtut`
+`mkdir data`
+`cd data`
+`curl -JLO https://s3.amazonaws.com/public.ged.msu.edu/ecoli_ref-5m.fastq.gz`
+`curl -JLO https://s3.amazonaws.com/public.ged.msu.edu/ecoliMG1655.fa.gz`
+`gunzip --keep ecoli_ref-5m.fastq.gz`
+`mkdir ~/smtut/sigs`
+`cd ~/smtut/sigs`
+`sourmash compute \`
+`--scaled 10000 \`
+`~/smtut/data/ecoli_ref*.fastq.gz \`
+`-o ~/smtut/sigs/ecoli-reads.sig \`
+`-k 31` 
+    - error read: zsh: no matches found: /Users/mismerid/smtut/data/ecoli_ref*.fastq.gz
+- First going to verify that the file exists
+- ls ~/smtut/data
+- sourmash compute \
+--scaled 10000 \
+~/smtut/data/ecoli_ref-5m.fastq.gz \
+-o ~/smtut/sigs/ecoli-reads.sig \
+-k 31
+- `sourmash search -k 31 ecoli-reads.sig ecoli-genome.sig --containment`
